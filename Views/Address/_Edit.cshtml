@@ -1,0 +1,118 @@
+﻿@model StepPay.Models.AddressViewModel
+
+@{
+    // var clientID = ViewContext.Controller.ViewBag.clientId as string;
+    List<SelectListItem> countries = new List<SelectListItem>()
+{
+new SelectListItem{Text="Republica Dominicana", Value = "62"}
+//new SelectListItem{Text="United States", Value = "2"}
+};
+
+    List<SelectListItem> addressType = new List<SelectListItem>()
+{
+new SelectListItem{Text="Residencial", Value = "100"},
+new SelectListItem{Text="Oficina", Value = "101"}
+};
+}
+
+<!-- Modal CardValidator-->
+<div class="modal fade" id="editAddressModal" tabindex="-1" role="dialog" aria-labelledby="editAddressModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header no-borders no-padding-bottom">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edición de Dirección</h5>
+                <button type="button" name="cancelAddAddress" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("Edit", "Address", FormMethod.Post, new { id = "EditAddress", novalidate = "novalidate" }))
+            {
+                @Html.AntiForgeryToken();
+                @Html.HiddenFor(model => model.IDCliente)
+                @Html.Hidden("addressID", (int)ViewBag.AddressID)
+                <div class="modal-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Direccion,"Dirección", htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "no-borders", type = "text", tabindex = "1" } })
+                            <div class="line-bottom"></div>
+                            @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Sector, htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.EditorFor(model => model.Sector, new { htmlAttributes = new { @class = "no-borders", type = "text", tabindex = "2" } })
+                            <div class="line-bottom"></div>
+                            @Html.ValidationMessageFor(model => model.Sector, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.Ciudad, htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.EditorFor(model => model.Ciudad, new { htmlAttributes = new { @class = "no-borders", type = "text", tabindex = "3" } })
+                            <div class="line-bottom"></div>
+                            @Html.ValidationMessageFor(model => model.Ciudad, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.EstadoProvinciaRegion, "Estado/Provincia/Región", htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.EditorFor(model => model.EstadoProvinciaRegion, new { htmlAttributes = new { @class = "no-borders", type = "text", tabindex = "4" } })
+                            <div class="line-bottom"></div>
+                            @Html.ValidationMessageFor(model => model.EstadoProvinciaRegion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.NvPais, "País", htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.DropDownListFor(model => model.NvPais, countries, new { @class = "form-control no-borders" })
+                            <div class="line-bottom"></div>
+                            @*@Html.EditorFor(model => model.ExpirationDateYear, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.NvPais, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.CodigoPostal, "Codigo Postal", htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.EditorFor(model => model.CodigoPostal, new { htmlAttributes = new { @class = "no-borders", type = "text", tabindex = "6" } })
+                            <div class="line-bottom"></div>
+                            @Html.ValidationMessageFor(model => model.CodigoPostal, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(model => model.NVTipo_Direccion, "Tipo de Dirección", htmlAttributes: new { @class = "control-label col-12 mobile-label out" })
+                        <div class="col-12">
+                            @Html.DropDownListFor(model => model.NVTipo_Direccion, addressType, new { @class = "form-control no-borders" })
+                            <div class="line-bottom"></div>
+                            @*@Html.EditorFor(model => model.ExpirationDateYear, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.NVTipo_Direccion, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row go-low-2">
+                        <div class="col-12 center-parent form-group">
+                            <div class="pretty p-default p-round p-thick">
+                                <input type="checkbox" name="IsDefault" id="IsDefault" value="true"/>
+                                <div class="state p-primary-o font-mid-rem">
+                                    <label>Marcar como predeterminada</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="center-btn custom-center">
+                        <button type="button" class="pt-btn" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="pt-btn pure-button ld-ext-left hovering" id="validateAddress">
+                            <div style="font-size:16px" class="ld ld-ring ld-cycle"></div>
+                            <span>Actualizar</span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

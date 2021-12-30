@@ -1,0 +1,152 @@
+﻿@model PagedList.IPagedList<StepPay.Models.Cliente>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <div class="container-info">
+        @Html.Partial("Mensaje")
+        <h3>Administrar Clientes</h3>
+
+
+        @using (Html.BeginForm("Index", "Cliente", FormMethod.Get, htmlAttributes: new { @class = "form-horizontal query", id = "consulta" }))
+        {
+           
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Criterios de Consulta
+                </div>
+                <div class="panel-body">
+                    <div class="form-group row">
+                        @Html.Label("fulName", "Digite el Nombre", new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBox("fullName", null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.Label("id", "Digite el Número de Identificación", new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBox("id", null, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+             
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-sm-offset-3">
+                            <input type="submit" value="Filtrar Clientes" class="btn btn-primary" />
+                        </div>
+                        <div class="col-xs-12 col-sm-2">
+                            <input type="reset" value="Nueva Búsqueda" class="btn btn-info" />
+                        </div>
+                   
+                            <div class="col-xs-12 col-sm-2">
+                                @Html.ActionLink("Nuevo Cliente", "Create", null, new { @class = "btn btn-info" })
+                            </div>
+                     
+                    </div>
+                </div>
+            </div>
+
+
+
+        }
+
+
+        <div class="resultados row">
+            <h3 class="col-xs-12">Resultados</h3>
+            @if (Model.Count > 0)
+            {
+
+                <div class="filters col-xs-12">
+                    <div class="col-sm-4">
+                        Registros por Página
+                        <span>
+                            @Html.DropDownList("pageSize", null, new { form = "consulta" })
+                        </span>
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                                                                                                             new { page, fullName = ViewBag.FilterFulName, id = ViewBag.FilterId, estatus = ViewBag.estatusFilter, pageSize = ViewBag.PageSizeNumber, IDEmpresa = ViewBag.FilterIDEmpresa }))
+                    </div>
+                    <div class="col-sm-4">
+                        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                @if (Model.Count > 0)
+                {
+                    <tr>
+                        <th>
+                            Identificación
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                       
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Teléfono
+                        </th>
+                       
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Numero_Identificacion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Correo_Electronico)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Celular)
+                            </td>
+
+                         
+                            <td>
+                           
+                              <a class="btn btn-sm btn-default" href="@Url.Action("Edit", new { id = item.IDCliente })"><span class="glyphicon glyphicon-pencil"></span></a>
+                               
+                          
+                             <a class="btn btn-sm btn-default" href="@Url.Action("Delete", new { id = item.IDCliente })"><span class="glyphicon glyphicon-trash"></span></a>
+                             
+                            </td>
+                        </tr>
+                    }
+                }
+
+                else
+                {
+                    <tr style="text-align:center;font-size:16px;font-weight:800;color:#e01818;"><td>No Existen Clientes que cumplan con los Parámetros Especificados</td></tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@section AgilPassCss{
+ 
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/GlobalScript.js"></script>
+}

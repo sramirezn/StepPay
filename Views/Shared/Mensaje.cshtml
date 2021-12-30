@@ -1,0 +1,38 @@
+﻿
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+{
+    <div class="alert alert-danger">
+        <button class="close" data-dismiss="alert">
+            ×
+        </button>
+        <i class="fa fa-times-circle"></i>
+        <strong>Error!</strong> @ViewBag.Error
+
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.alerta))
+{
+    <div class="alert alert-warning">
+
+        <button class="close" data-dismiss="alert">
+            ×
+        </button>
+        <i class="fa fa-exclamation-triangle"></i>
+        <strong>Alerta!</strong> @ViewBag.alerta
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.listo))
+{
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">
+            ×
+        </button>
+        <i class="fa fa-check-circle"></i>
+        <strong>Realizado!</strong> @ViewBag.listo
+    </div>
+}
+
+

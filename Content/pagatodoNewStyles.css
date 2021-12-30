@@ -1,0 +1,483 @@
+﻿.header {
+    background-color: #0056b8;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+
+.wrapper {
+    padding-top: 40px;
+}
+
+.modal {
+    top: 55px;
+}
+
+.navbar-dark .navbar-toggler {
+    border: none;
+}
+
+.navbar > .container, .navbar > .container-fluid {
+    justify-content: flex-start;
+}
+
+.title {
+    position: relative;
+}
+
+.navbar-brand {
+    font-size: 1.1rem;
+    margin: 0 auto;
+    padding-left: 25px;
+}
+
+body {
+    font-family: sans-serif;
+    color: #0056b8;
+    padding-top: 0;
+}
+
+.body-content {
+    padding-top: 30px;
+}
+
+label {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.no-borders {
+    border: none;
+    width: 100%;
+    background-color: transparent;
+}
+
+    .no-borders:hover {
+        cursor: text;
+    }
+
+    .no-borders:focus {
+        outline: none;
+    }
+
+.line-bottom {
+    width: 100%;
+    border: .5px solid #4786d3;
+}
+
+
+input[type=text], select {
+    color: #0757b9;
+    text-align: center;
+    font-weight: 900;
+}
+
+#CardNumber {
+    max-width: 100%;
+    background-image: url(../Images/cardType.png), url(../Images/cardType.png);
+    background-repeat: no-repeat no-repeat;
+    background-position: 2px -71px, calc(100% + 90px) 3px;
+    background-size: 120px 361px, 120px 361px;
+    height: 2.3rem;
+}
+
+.form-control {
+    color: #0056b8;
+}
+
+
+    .form-control:focus {
+        box-shadow: none;
+    }
+
+.pretty {
+    position: relative;
+    display: inline-block;
+    margin-right: 1em;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+
+    .pretty input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-width: 1em;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .pretty * {
+        box-sizing: border-box;
+    }
+
+    .pretty .state label {
+        position: initial;
+        display: inline-block;
+        font-weight: 400;
+        margin: 0;
+        text-indent: 1.5em;
+        min-width: calc(1em + 2px);
+    }
+
+    .pretty input ~ .state.p-primary-o label:before, .pretty.p-toggle .state.p-primary-o label:before {
+        border-color: #0056b8;
+    }
+
+    .pretty.p-default.p-thick .state label:after, .pretty.p-default.p-thick .state label:before {
+        border-width: calc(1em / 7);
+    }
+
+    .pretty.p-round .state label:after, .pretty.p-round .state label:before {
+        border-radius: 100%;
+    }
+
+    .pretty .state label:before {
+        border-color: #bdc3c7;
+    }
+
+    .pretty .state label:after, .pretty .state label:before {
+        content: '';
+        width: calc(1em + 2px);
+        height: calc(1em + 2px);
+        display: block;
+        box-sizing: border-box;
+        border-radius: 0;
+        border: 1px solid transparent;
+        z-index: 0;
+        position: absolute;
+        left: 0;
+        top: calc((0% - (100% - 1em)) - 8%);
+        background-color: transparent;
+    }
+
+    .pretty.p-default:not(.p-fill) input:checked ~ .state.p-primary-o label:after {
+        background-color: #0056b8 !important;
+    }
+
+    .pretty input:checked ~ .state.p-primary-o label:after, .pretty.p-toggle .state.p-primary-o label:after {
+        background-color: transparent;
+    }
+
+
+    .pretty.p-default input:checked ~ .state label:after {
+        background-color: #0056b8 !important;
+    }
+
+    .pretty.p-default.p-thick .state label:after {
+        -webkit-transform: scale(.4) !important;
+        -ms-transform: scale(.4) !important;
+        transform: scale(.4) !important;
+    }
+
+::selection {
+    background: #39f;
+    color: #fff;
+    text-shadow: none;
+}
+
+[role=button], a, area, button, input:not([type=range]), label, select, summary, textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+.center-parent {
+    display: inline-flex;
+}
+
+.custom-center {
+    margin: 0 auto;
+}
+
+.pt-btn {
+    background-color: #f4f4f4;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    line-height: 1;
+    border-radius: 0.1rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    color: #0056b8;
+    cursor: pointer;
+    font-size: 16px;
+    box-sizing: padding-box;
+    padding: 3% 8%;
+    width: 160px;
+    margin: auto;
+}
+
+    .pt-btn:first-of-type {
+        margin: 5px;
+    }
+
+a.pt-btn {
+    text-decoration: none;
+}
+
+.font-mid-rem {
+    font-size: 14px;
+}
+
+.go-low-1 {
+    margin: 20px 0;
+}
+
+.go-low-2 {
+    margin-top: 10px;
+}
+
+.fieldsetheader {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+#fieldsetAddress {
+    margin-top: 50px;
+}
+
+.blue-theme {
+    color: #0056b8;
+}
+
+
+.cntr {
+    margin: auto;
+}
+
+.btn-radio {
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+    .btn-radio:not(:first-child) {
+        margin-left: 20px;
+    }
+
+@media screen and (max-width: 480px) {
+    .btn-radio {
+        display: block;
+        float: none;
+    }
+
+        .btn-radio:not(:first-child) {
+            margin-left: 0;
+            margin-top: 15px;
+        }
+}
+
+.btn-radio svg {
+    fill: none;
+    vertical-align: middle;
+}
+
+    .btn-radio svg circle {
+        stroke-width: 2;
+        stroke: #0757b9;
+    }
+
+    .btn-radio svg path {
+        stroke: #0757b9;
+    }
+
+        .btn-radio svg path.inner {
+            stroke-width: 6;
+            stroke-dasharray: 19;
+            stroke-dashoffset: 19;
+        }
+
+        .btn-radio svg path.outer {
+            stroke-width: 2;
+            stroke-dasharray: 57;
+            stroke-dashoffset: 57;
+        }
+
+.btn-radio input {
+    display: none;
+}
+
+    .btn-radio input:checked + svg path {
+        transition: all 0.4s ease;
+    }
+
+        .btn-radio input:checked + svg path.inner {
+            stroke-dashoffset: 38;
+        }
+
+        .btn-radio input:checked + svg path.outer {
+            stroke-dashoffset: 0;
+        }
+
+.btn-radio span {
+    display: inline;
+    vertical-align: middle;
+    position: relative;
+    left: 2%;
+    top: 1%;
+}
+
+
+.no-center {
+    text-align: left;
+}
+
+
+.address {
+    padding: 5px;
+    min-height: 60px;
+    margin-bottom: 15px;
+}
+
+    .address label {
+        text-align: justify;
+        text-justify: inter-word;
+        padding-right: 2%;
+    }
+
+.addressselected {
+    background-color: #f6f6f6;
+    border-radius: 2px;
+}
+
+.display-none {
+    display: none;
+}
+
+
+.center-btn {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.container {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+.pt-box {
+    background-color: #f6f6f6;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.pt-bottom {
+    position: fixed;
+    bottom: 0;
+}
+
+.go-low-10 {
+    height: 25vh;
+}
+
+
+.mobile-label {
+    text-align: left;
+    position: relative;
+    top: 28px;
+    font-size: 18px;
+}
+
+.more-mobile-label {
+    top: 42px;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0;
+}
+
+
+.custom-error {
+    color: #dc3545;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.out {
+    top: 2px;
+    font-size: 14px;
+}
+
+.low-padding {
+    padding-right: 3px;
+}
+
+.margin-top {
+    margin-top: 25px;
+}
+
+.text-align-right {
+    text-align: left;
+}
+
+.no-gutters-left {
+    padding-left: 0;
+}
+
+.font-weight-8 {
+    font-weight: 800;
+}
+
+.logo {
+    position: absolute;
+}
+
+.logo-img {
+    width: 145px;
+}
+
+
+.box-shadow-menu {
+    position: relative;
+    padding-left: 1.25em;
+    top: 10px;
+}
+
+.close, .close:hover {
+    color: #0056b8;
+    opacity:0.75;
+}
+
+    .close:hover{
+        opacity:1;
+    }
+
+    .box-shadow-menu:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -4px;
+        width: 1.1em;
+        height: 0.15em;
+        background: white;
+        box-shadow: 0 0.3em 0 0 white, 0 0.6em 0 0 white;
+    }
+
+    @media screen and (max-width:414px){
+        .pt-btn {
+            width: 140px;
+        }
+    }
